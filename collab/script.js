@@ -1,27 +1,13 @@
 wow = new WOW();
 wow.init();
+
 $(document).ready(function(e) {
 
-$('#video-icon').on('click',function(e){
-e.preventDefault();
-$('.video-popup').css('display','flex');
-$('.iframe-src').slideDown();
-});
-$('.video-popup').on('click',function(e){
-var $target = e.target.nodeName;
-var video_src = $(this).find('iframe').attr('src');
-if($target != 'IFRAME'){
-$('.video-popup').fadeOut();
-$('.iframe-src').slideUp();
-$('.video-popup iframe').attr('src'," ");
-$('.video-popup iframe').attr('src',video_src);
-}
-});
+    $('.slider').bxSlider({
+    pager: false
+    });
+    });
 
-$('.slider').bxSlider({
-pager: false
-});
-});
 
 $(window).on("scroll",function () {
 
@@ -61,6 +47,31 @@ topOffset: -63
 });
 
 
+//Auto-Slider
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll('.slider-item');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Show the first slide initially
+    showSlide(currentSlide);
+
+    // Auto-slide every 5 seconds (5000 milliseconds)
+    setInterval(nextSlide, 3000);
+});
 
 document.getElementById('moreButton').addEventListener('click', function () {
     var hiddenFAQs = document.getElementById('hiddenFAQs');
@@ -75,25 +86,30 @@ document.getElementById('moreButton').addEventListener('click', function () {
     }
 });
 
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the modal, button, and close elements
+
+//Modal Handler
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the modal and close elements
     var modal = document.getElementById('myModal');
-    var openModalBtn = document.querySelectorAll('openModalBtn');
     var closeModalBtn = document.querySelector('.close');
 
-    // Open the modal when the button is clicked
-    openModalBtn.addEventListener('click', function() {
-        modal.style.display = 'block';
+    // Get all buttons with the class 'openModalBtn'
+    var openModalBtns = document.querySelectorAll('.openModalBtn');
+
+    // Loop through all buttons and attach the event listener
+    openModalBtns.forEach(function (button) {
+        button.addEventListener('click', function () {
+            modal.style.display = 'block';
+        });
     });
 
     // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener('click', function() {
+    closeModalBtn.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 
     // Close the modal when clicking outside of it
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
@@ -101,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle sign-up button click
     var signUpBtn = document.getElementById('signUpBtn');
-    signUpBtn.addEventListener('click', function() {
+    signUpBtn.addEventListener('click', function () {
         alert('Sign Up functionality to be implemented.');
     });
 });

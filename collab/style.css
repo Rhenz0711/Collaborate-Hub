@@ -6,6 +6,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 14px;
 	overflow-x: hidden;
+	width: 100vw;
 }
 a {
 	color:#5f0099;
@@ -124,6 +125,7 @@ h6 {
 	background: linear-gradient(to left, #322579, #b8a5cb);
 	padding:100px 0px;
 	position:relative;
+	overflow-x: hidden;
 }
 .banner::before {
 	content: "";
@@ -144,10 +146,8 @@ h6 {
 }
 .svg-wave {
     position: absolute;
-	left: -200px;
-    width: 200vw;
-    bottom: 0;
-    /* overflow: hidden; */
+    width: 200%;
+    bottom: -1px;
 }
 
 .svg-hero {
@@ -168,7 +168,10 @@ h6 {
 }
 .banner-text p span{
 	font-weight: 600;
-	color: #fbff05;
+	color: #0509ff;
+}
+.banner-text h6{
+	margin-top: 20px;
 }
 .banner-text ul {
 	list-style: none;
@@ -184,6 +187,7 @@ h6 {
 	width: 150px;
 	border-radius: 7px;
 }
+
 .img-fluid{
 	width: 320px;
 }
@@ -277,7 +281,7 @@ h6 {
 }
 .single-feature p span{
 	font-weight: 700;
-	color: rgba(255, 0, 0, 0.747);
+	color: rgba(4, 0, 255, 0.747);
 }
 .icon-border span {
 	display: block;
@@ -325,8 +329,26 @@ h6 {
 	border-radius: 5px !important;
 	box-shadow:none !important;
 }
+
+.slider {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.slider-item.active {
+	display: block;
+	opacity: 1;
+}
+
+
+
 .slider-item {
 	padding:20px;
+	display: none;
+	width: 100%;
+	text-align: center;
+	transition: opacity 2s ease-in-out;
 }
 .slider .test-img img {
 	border: 12px solid #fff;
@@ -355,6 +377,8 @@ h6 {
 	font-size: 1.5em;
 	font-weight: 700;
 }
+
+
 .faq, .hidden-faqs {
 	background: #fafafa;
 	border-bottom: 1px solid #e4e4e4;
@@ -447,6 +471,7 @@ input {
 
 /* Media Quaries */
 @media all and (max-width:991px) {
+
 .navbar .navbar-collapse {
 	overflow: auto;
 	background:  rgb(201, 177, 214);
@@ -465,7 +490,11 @@ input {
 	margin-bottom:20px;
 }
 }
+
+
 @media all and (max-width:768px) {
+
+
 .nav-scroll .navbar-brand img, .navbar-brand img {
 	transform: scale(0.75) !important;
 	-webkit-transform: scale(0.75) !important;
